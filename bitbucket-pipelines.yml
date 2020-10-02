@@ -1,0 +1,18 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: ubuntu:18.04
+
+pipelines:
+  default:
+    - step:
+        script:
+          - pipe: atlassian/ssh-run:0.2.4
+            variables:
+              SSH_USER: 'root'
+              SERVER: '188.120.230.61'
+              MODE: 'command'
+              COMMAND: 'deploy.sh'
+              PORT: '22' # Optional
